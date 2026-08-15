@@ -1,0 +1,63 @@
+
+
+header {
+    background-color:rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+
+body{
+    font-family: "Inter", sans-serif;
+    background-color: #dfdfdf;
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*********
+*CABECALHO
+*********/
+header {
+    background-color: #ffffff;
+}
+header .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+header .brand img {
+    height: 3rem;
+}
+
+header .brand h1 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+}
+
+header .brand p {
+    font-size: 0.8rem;
+    margin-top: 2px;
+    color: #78716c;
+}
+
+header .cart-buton {
+  display: flex;
+  border: 1px solid #e7e5e4;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+}
+
+header .cart-buton img{
+   width: 1.25rem;
+   height: 1.25rem;
+}
