@@ -17,21 +17,31 @@
 
 body {
     font-family: "Inter", sans-serif;
-
+    min-height: 100vh;
     background-color: var(--corBackground);
+    color: var(--text);
+
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
 }
 
-.container {
+.container, main {
     width: min(100%, 1200px);
     margin-inline: auto;
 }
 
 body > header {
     background-color: var(--corBackground);
+
+    position: sticky;
+    top: 0;
+    z-index: 20;
     
     .container {
         display: flex;
         justify-content: space-between;
+        border-bottom: 1px solid var(--border);
+        padding-block: 1rem;
     }
     
     .brand {
@@ -45,11 +55,20 @@ body > header {
 
         h1 {
             color: var(--corLogo);
-            font-size: 1.7rem;
+            font-size: clamp(1.25rem, 5vw, 1.75rem);
             font-weight: 700;
-            line-height: 1.05rem;
+            line-height: 1.05;
             letter-spacing: -0.5px;
+
         }
+     
+        p{
+            display: none;
+            margin-top: 2px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+
+    }    
 
         p {
             margin-top: 2px;
@@ -67,6 +86,7 @@ body > header {
 
         border: 1px solid var(--border);
         display: flex;
+        flex: 0 0 auto;
         width: 2.75rem;
         height: 2.75rem;
         align-items: center;   
@@ -77,14 +97,31 @@ body > header {
 
 body > nav {
     background-color: var(--corBackground);
+    border-bottom: 1px solid var(--border);
+    padding-block: 0.5rem;
+
+    overflow: hidden;
+
+    position: sticky;
+    top: 5rem;
+    z-index: 10;
 
     ul{
         display: flex;
         list-style: none;
-        gap: 1rem;
+        gap: 5rem;
         padding-block: 1rem;
 
-        a{
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scrollbar-width: thin;
+
+        li{
+            flex: 0 0 auto;
+
+        }
+
+        a {
             border: 1px solid var(--border);
             border-radius: 1rem;
             padding: 0.5rem 1rem;
@@ -107,6 +144,8 @@ body > nav {
             }
         }
     }
+
+    
 }
 
 /*****
@@ -115,13 +154,13 @@ main
 
 main{
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 330px;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;
     padding-block: 1.5rem;
 }
 main > section{
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns:minmax(0, 1fr);
     gap: 1.25rem;
     align-items: start;
 }
@@ -216,7 +255,42 @@ section article button{
     grid-column: 2;
     align-self: center;
     margin-right: 1rem;
+
 }
+
+main aside{
+    order: -1;
+    align-self: start;
+    border: 1px solid var(--border);
+    border-radius: 0.8rem;
+    background-color: #ffffff;
+    box-shadow: 0 10px 26px rgb(36, 33, 31 / 8%);
+}
+
+main aside h2{
+    padding: 1rem;
+    font-size: 1rem;
+}
+main aside .cart-empty{
+    text-align: center;
+    padding-block: 2rem;
+    border-top: 1px solid var(--border);
+}
+main aside .cart-empty p:first-of-type{
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-top:0.6rem;
+}
+
+main aside .cart-empty p:last-of-type{
+    font-size: 0.75rem;
+    margin-top:0.25rem;
+    color: var(--text-muted);
+    
+}
+
+
 
 body > footer {
     background-color: var(--text-muted);
@@ -227,8 +301,55 @@ body > footer {
     padding-block: 1.5rem;
 
     .container{
-        align-items: center;
+        align-items: flex-start;
         display: flex;
         justify-content: space-between;
+        flex-direction: column;
+        
+    }
+}
+/****************
+*RESPONSIVIDADE
+*****************/
+/*Celular maiores 480*/
+
+@media (min-width: 30rem){
+    body header .brand p{
+        display: block;
+    }
+    header .cart-button{
+        width: 3.25rem;
+        height: 2.625rem;
+    }
+}
+
+
+/*Tablet 768*/
+@media (min-width: 48rem){
+    main section{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    footer .container{
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+}
+
+/*desktop 1024*/
+@media (min-width: 64rem){
+    main{
+        grid-template-columns: minmax(0, 1fr) 330px;
+    }
+
+    main section{
+        grid-column: 1;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    main aside{
+        order:initial;
+        grid-column: 2; 
     }
 }
