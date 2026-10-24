@@ -121,7 +121,9 @@ body {
 
         }
 
-        a {
+        button {
+            background-color: transparent;
+            cursor: pointer;
             border: 1px solid var(--border);
             border-radius: 1rem;
             padding: 0.5rem 1rem;

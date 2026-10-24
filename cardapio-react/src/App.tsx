@@ -1,21 +1,25 @@
 import { Footer } from "./components/layout/footer"
 import { Header } from "./components/layout/header"
-
+import {NavigationBar} from "./components/layout/navigation"
+import { categories } from "./data/categories"
 
 function App() {
-  return (
+
+  function handleSelectCategory(alias: string) {
+        alert('Categoria: ' + alias)
+    } 
+
+return (
     <>
       <Header />
 
-    <nav>
-        <ul className="container">
-            <li><a href="#todos" className="active">Todos</a></li>
-            <li><a href="#Lanches">Lanches</a></li>
-            <li><a href="#Porcoes">Porções</a></li>
-            <li><a href="#Bebidas">Bebidas</a></li>
-            <li><a href="#Sobremesas">Sobremesas</a></li>
-        </ul>
-    </nav>
+      <NavigationBar 
+      categories={categories} 
+      activeCategory="porcoes" 
+      onSelectCategory={handleSelectCategory} 
+      />
+
+
     <main>
         <section>
             <header>
