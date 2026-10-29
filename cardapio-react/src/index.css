@@ -109,7 +109,7 @@ body {
     ul{
         display: flex;
         list-style: none;
-        gap: 5rem;
+        gap: 1rem;
         padding-block: 1rem;
 
         overflow-x: auto;
